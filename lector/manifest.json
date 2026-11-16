@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Lector de Navegación por Teclado",
+  "version": "2.1",
+  "description": "Asistente de voz neuronal local con múltiples voces para navegar con Tab y Enter.",
+  "permissions": ["storage"],
+  "host_permissions": ["http://127.0.0.1:5050/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Cambiar voz del lector"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "all_frames": true,
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
